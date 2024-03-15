@@ -1,4 +1,6 @@
-export type IPaymentMethods = {
-  cash: 'cash',
-  creditCard: 'credit-card'
+
+export interface IPaymentMethods {
+  value: string
+  label: string
+  disabled: boolean
 }
