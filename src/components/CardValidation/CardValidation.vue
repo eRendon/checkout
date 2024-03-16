@@ -74,7 +74,7 @@ const handlePayment = (): void => {
     const validation = validateCreditCardNumber(creditCardData.value.number)
     console.log(validation)
     if (validation.valid) {
-      
+
     } else {
       alertStore.setAlert({
         icon: 'warningIcon',
