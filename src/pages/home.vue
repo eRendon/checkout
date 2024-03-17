@@ -10,7 +10,7 @@
           <div class="grid grid-cols-2 gap-4">
             <div>
               <img loading="lazy" alt="ecommerce" class="lg:w-1/2 w-full ml-auto mr-auto object-cover object-center rounded " :src="product.image">
-              <h1 class="text-gray-900 text-3xl text-center mt-4 title-font font-medium">{{ product.title }}</h1>
+              <h1 id="product-title" class="text-gray-900 text-3xl text-center mt-4 title-font font-medium">{{ product.title }}</h1>
               <h1 class="text-gray-900 text-3xl text-center mt-4 title-font font-medium">{{ product.category }}</h1>
             </div>
             <div>
@@ -33,15 +33,15 @@
 
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
-import { getProductById } from '../services/product'
-import { IProduct } from '../interfaces/IProduct'
+import { getProductById } from '@/services/product'
+import { IProduct } from '@/interfaces/IProduct'
 import Spinner from '../components/Spinner.vue'
 import Select from '../components/atoms/Select.vue'
-import { IPaymentMethods } from '../interfaces/IPaymentMethods'
-import { PaymentMethods } from '../constants/PaymentMethods'
+import { IPaymentMethods } from '@/interfaces/IPaymentMethods'
+import { PaymentMethods } from '@/constants/PaymentMethods'
 import Modal from '../components/atoms/Modal.vue'
 import CardValidation from '../components/CardValidation/CardValidation.vue'
-import { IModal } from '../interfaces/IModal'
+import { IModal } from '@/interfaces/IModal'
 
 const initialState: IProduct = {
   description: '',
@@ -80,12 +80,10 @@ const isLoading = ref<Boolean>(true)
 
 onMounted(() => {
   getProductById('2').then((response) => {
-    console.log(response)
     product.value = response
     isLoading.value = false
   }).catch((error) => {
     isLoading.value = false
-    console.log(error)
   })
 })
 

@@ -19,7 +19,7 @@ const validateCreditCardNumber = (creditCardNumber: string): CreditCardValidatio
 
 const validateCreditCardType = (creditCardNumber: string): string | null => {
   const types = creditCardType(creditCardNumber)
-  console.log(types)
+  console.log('lost types', types)
   if (types.length > 0) {
     return types[0].type
   }

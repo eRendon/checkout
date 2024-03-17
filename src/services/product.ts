@@ -1,6 +1,5 @@
-import { AxiosService } from '../libs/axios/axios'
-import { IProduct } from '../interfaces/IProduct'
-import { AxiosResponse } from 'axios'
+import { AxiosService } from '@/libs/axios/axios'
+import { IProduct } from '@/interfaces/IProduct'
 
 const getProductById = async (id: string): Promise<IProduct> => {
   try {
