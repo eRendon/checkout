@@ -62,7 +62,7 @@ const creditCardData = ref<ICreditCard>({
   name: ''
 })
 
-const emits = defineEmits(['onCancel'])
+const emits = defineEmits(['onCancel', 'onSubmit'])
 
 const cancel = (): void => {
   emits('onCancel', false)
@@ -82,7 +82,7 @@ const handlePayment = (): void => {
     const validation = validateCreditCardNumber(creditCardData.value.number)
     console.log(validation)
     if (validation.valid) {
-
+      emits('onSubmit')
     } else {
       alertStore.setAlert({
         icon: 'warningIcon',

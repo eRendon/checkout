@@ -1,9 +1,11 @@
 import { ISummary } from '@/interfaces/ISummary'
 import { defineStore } from 'pinia'
+import { PaymentMethods } from '@/constants/PaymentMethods'
 
 export const summaryState = defineStore('summary.state', {
   state: (): ISummary => ({
-    status: 'success',
+    transactionStatus: 'success',
+    status: '',
     amount: 0,
     description: '',
     product: {
@@ -18,13 +20,7 @@ export const summaryState = defineStore('summary.state', {
         count: 0
       }
     },
-    id: '',
     creationDate: new Date(),
-    paymentData: {
-      name: '',
-      date: '',
-      cvc: '',
-      number: ''
-    }
+    paymentType: PaymentMethods.creditCard
   })
 })

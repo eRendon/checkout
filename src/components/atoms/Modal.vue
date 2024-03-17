@@ -41,7 +41,7 @@
 
 <script lang="ts" setup>
 
-import { IModal } from '@/interfaces/IModal'
+import { IModal } from '@/interfaces/components/IModal'
 const emits = defineEmits(['onHideModal'])
 
 const hideModal = (): void => {

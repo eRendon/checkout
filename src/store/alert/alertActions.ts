@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { IAlert } from '@/interfaces/IAlert'
+import { IAlert } from '@/interfaces/components/IAlert'
 import { useAlertStore } from '@/store/alert/alertStore'
 
 export const alertActions = defineStore('repo.actions', () => {
@@ -12,7 +12,7 @@ export const alertActions = defineStore('repo.actions', () => {
 
     setTimeout(() => {
       hideAlert()
-    }, 2000)
+    }, 3000)
   }
   const hideAlert = (): void => {
     alertStore.show = false

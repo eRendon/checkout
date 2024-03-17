@@ -1,6 +1,5 @@
 
-export interface IPaymentMethods {
+export interface IPaymentMethod {
+  text: string
   value: string
-  label: string
-  disabled: boolean
 }

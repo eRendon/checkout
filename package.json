@@ -15,7 +15,8 @@
     "card-validator": "^9.1.0",
     "credit-card-type": "^10.0.0",
     "pinia": "^2.1.7",
-    "vue": "^3.4.21"
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0"
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.2",

@@ -1,10 +1,11 @@
 import { IProduct } from '@/interfaces/IProduct'
 
 export interface IResponse {
-  status: 'success' | 'error'
+  status: string
+  transactionStatus: 'error' | 'success'
   amount: number
   description: string
-  product: IProduct
-  id: string
+  product?: IProduct
+  id?: string
   creationDate: Date
 }
