@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils'
 import CardValidation from '@/components/CardValidation/CardValidation.vue'
 import { it, describe, expect, beforeEach, vi } from 'vitest'
 import { createPinia, setActivePinia } from 'pinia'
-import { useAlertStore } from '@/store/alert'
+import { useAlertStore } from '@/store/alert/alertStore'
 
 describe('CardValidation.vue', () => {
   beforeEach(() => {

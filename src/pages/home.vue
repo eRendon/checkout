@@ -1,7 +1,7 @@
 <template>
   <Spinner v-if="isLoading"></Spinner>
   <Modal @onHideModal="hideModal" :show="modalData.show" :title="modalData.title">
-    <CardValidation></CardValidation>
+    <CardValidation @onCancel="modalData.show = false"></CardValidation>
   </Modal>
   <div v-if="!isLoading" class=" ml-auto mr-auto mt-20">
     <section class="text-gray-700 body-font overflow-hidden">
@@ -74,7 +74,7 @@ const hideModal = (): void => {
   modalData.value.show = false
 }
 
-const selectedPaymentMethod = ref<string>('')
+const selectedPaymentMethod = ref<string>(PaymentMethods.creditCard)
 const product = ref<IProduct>(initialState)
 const isLoading = ref<Boolean>(true)
 

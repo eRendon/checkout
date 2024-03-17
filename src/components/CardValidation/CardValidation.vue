@@ -32,6 +32,7 @@
   </div>
   <div class="flex items-center float float-right p-4 md:p-5  rounded-b dark:border-gray-600">
     <button type="button"
+            @click="cancel"
             class="text-black bg-gray-200 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
       Cancelar
     </button>
@@ -48,7 +49,7 @@ import { ref } from 'vue'
 import { validateCreditCardNumber, validateCreditCardType } from './validations'
 import { ICreditCard } from '@/interfaces/ICreditCard'
 import { validateForms } from '@/libs/validateForms'
-import { useAlertStore } from '@/store/alert'
+import { useAlertStore } from '@/store/alert/alertStore'
 
 const alertStore = useAlertStore()
 
@@ -60,6 +61,12 @@ const creditCardData = ref<ICreditCard>({
   date: '',
   name: ''
 })
+
+const emits = defineEmits(['onCancel'])
+
+const cancel = (): void => {
+  emits('onCancel', false)
+}
 
 const detectCardType = (number: string): void => {
   if (number.length === 0) {

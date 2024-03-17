@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Home from './pages/home.vue'
 import Alert from './components/atoms/Alert.vue'
-import { useAlertStore } from './store/alert'
+import { useAlertStore } from './store/alert/alertStore'
 
 const alertStore = useAlertStore()
 
