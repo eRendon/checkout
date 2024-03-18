@@ -7,26 +7,28 @@
     <section class="text-gray-700 body-font overflow-hidden">
       <div class="mx-auto bg-white box-detail shadow-xl">
         <div class="lg:w-4/5 mx-auto flex flex-wrap">
-          <div class="grid grid-cols-2 gap-4">
-            <div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="xs:p-8">
               <img loading="lazy" alt="ecommerce"
-                   class="lg:w-1/2 w-full ml-auto mr-auto object-cover object-center rounded " :src="product.image">
-              <h1 id="product-title" class="text-gray-900 text-3xl text-center mt-4 title-font font-medium">
+                   class="lg:w-1/2 xs:w-3/12 w-full ml-auto mr-auto object-cover object-center rounded " :src="product.image">
+              <h1 id="product-title" class="text-gray-900 text-xl sm:text-3xl text-center mt-4 title-font font-medium">
                 {{ product.title }}</h1>
-              <h1 class="text-gray-900 text-3xl text-center mt-4 title-font font-medium">{{ product.category }}</h1>
+              <h1 class="text-gray-900 text-xl sm:text-3xl text-center mt-4 title-font font-medium">{{ product.category }}</h1>
             </div>
             <div>
-              <div class="w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-                <div class="mt-2">
-                  <Select label="Métodos de pago" v-model="selectedPaymentMethod" :options="paymentOptions"></Select>
-                </div>
-                <div class="mt-8">
-                  <Select label="Tipo de respuesta" v-model="typeResponse" :options="responseOptions"></Select>
+              <div class="w-full lg:pl-10 xs:p-8 md:py-6 mt-6 lg:mt-0">
+                <div class="w-6/12 mr-auto ml-auto md:w-full">
+                  <div class="mt-2">
+                    <Select label="Métodos de pago" v-model="selectedPaymentMethod" :options="paymentOptions"></Select>
+                  </div>
+                  <div class="mt-8">
+                    <Select label="Tipo de respuesta" v-model="typeResponse" :options="responseOptions"></Select>
+                  </div>
                 </div>
                 <div class="flex mt-16">
                   <span class="title-font font-medium text-2xl text-gray-900">${{ product.price }}</span>
                   <button @click="handlePay"
-                          class="flex ml-auto text-white bg-rose-500 border-0 py-2 px-6 focus:outline-none hover:bg-rose-600 rounded-lg">
+                          class="flex ml-auto text-xl sm:text-3xl text-white bg-rose-500 border-0 py-2 px-6 focus:outline-none hover:bg-rose-600 rounded-lg">
                     Continuar con el pago
                   </button>
                 </div>
@@ -49,7 +51,6 @@ import { PaymentMethods } from '@/constants/PaymentMethods'
 import Modal from '../components/atoms/Modal.vue'
 import CardValidation from '../components/CardValidation/CardValidation.vue'
 import { IModal } from '@/interfaces/components/IModal'
-import { ICreditCard } from '@/interfaces/ICreditCard'
 import apiResponse from '@/api/api'
 import { useAlertStore } from '@/store/alert/alertStore'
 import { useSummaryStore } from '@/store/summary/summaryStore'
@@ -112,6 +113,7 @@ onMounted(() => {
     product.value = response
     isLoading.value = false
   }).catch((error) => {
+    console.log(error)
     isLoading.value = false
   })
 })
@@ -133,7 +135,7 @@ const submitPayment = (): void => {
     summaryStore.setProduct(product.value)
     summaryStore.setPaymentType(selectedPaymentMethod.value)
 
-    // setLocalStore<ISummary>({ ...response, paymentType: selectedPaymentMethod.value }, 'summary')
+    setLocalStore<ISummary>({ ...response, paymentType: selectedPaymentMethod.value }, 'summary')
     router.push('/summary')
   }).catch((error) => {
     console.log(error)
@@ -157,6 +159,12 @@ const submitPayment = (): void => {
 
   border-radius: 1.25rem;
   border: 1px solid #eee;
+}
+
+@media screen and (max-width: 768px) {
+  .box-detail {
+    width: 70%;
+  }
 }
 
 section {

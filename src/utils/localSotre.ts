@@ -1,14 +1,11 @@
-import serializeObject from '@/utils/serializeObject'
-
 const setLocalStore = <T>(data:T, key: string): void => {
-  console.log(serializeObject(data))
-  localStorage.setItem(key, JSON.parse(serializeObject(data)))
+  localStorage.setItem(key, JSON.stringify(data))
 }
 
 const getLocalStore = <T>(key: string): T | null => {
-  const data: string = localStorage.getItem(key)
+  const data: string | null = localStorage.getItem(key)
   if (data) {
-    return JSON.stringify(data) as T
+    return JSON.parse(data) as T
   }
   return null
 }

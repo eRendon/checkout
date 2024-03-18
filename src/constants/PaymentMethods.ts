@@ -15,7 +15,12 @@ const cash: IPaymentMethod = {
   value: PaymentMethods.cash
 }
 
-export const methods = {
+interface Methods {
+  [key: string]: IPaymentMethod;
+}
+
+
+export const methods: Methods = {
   'credit-card':creditCard,
   'cash': cash
 }

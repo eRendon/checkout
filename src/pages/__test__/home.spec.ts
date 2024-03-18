@@ -1,12 +1,17 @@
 import { mount } from '@vue/test-utils'
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect, vi, beforeEach } from 'vitest'
 import Home from '@/pages/home.vue'
 import { getProductById } from '@/services/product'
 import { IProduct } from '@/interfaces/IProduct'
 import Spinner from '@/components/Spinner.vue'
 import Modal from '@/components/atoms/Modal.vue'
 import CardValidation from '@/components/CardValidation/CardValidation.vue'
+import { createPinia, setActivePinia } from 'pinia'
 describe('Home Component', () => {
+
+  beforeEach(() => {
+    setActivePinia(createPinia())
+  })
 
   it('renders correctly when not loading', () => {
     const wrapper = mount(Home, {

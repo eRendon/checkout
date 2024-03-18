@@ -1,7 +1,4 @@
-import { IResponse } from './models/IResponse'
-import { IPaymentMethod } from '@/interfaces/IPaymentMethods'
 import { ISummary } from '@/interfaces/ISummary'
-import { ICreditCard } from '@/interfaces/ICreditCard'
 
 const generateId = (): string => {
   const timestamp = Date.now().toString(36);
@@ -57,7 +54,7 @@ const errorResponse = (paymentType: string): ISummary => {
   }
 }
 
-const apiResponse = (status: number, paymentType: string): Promise<IResponse> => {
+const apiResponse = (status: number, paymentType: string): Promise<ISummary> => {
   console.log(status)
   return new Promise((resolve, reject) => {
     setTimeout(() => {
