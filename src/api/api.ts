@@ -1,12 +1,12 @@
 import { ISummary } from '@/interfaces/ISummary'
 
-const generateId = (): string => {
+export const generateId = (): string => {
   const timestamp = Date.now().toString(36);
   const random = Math.random().toString(36).substring(2, 8);
   return timestamp + random;
 }
 
-const successResponse = (paymentType: string): ISummary => {
+export const successResponse = (paymentType: string): ISummary => {
   return {
     status: 'Exitosa',
     transactionStatus: 'success',
@@ -30,7 +30,7 @@ const successResponse = (paymentType: string): ISummary => {
   }
 }
 
-const errorResponse = (paymentType: string): ISummary => {
+export const errorResponse = (paymentType: string): ISummary => {
   return {
     status: 'Rechazada',
     transactionStatus: 'error',
@@ -58,7 +58,7 @@ const apiResponse = (status: number, paymentType: string): Promise<ISummary> => 
   console.log(status)
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      status === 1 ? resolve(successResponse(paymentType)) : status === 2 ? resolve(errorResponse(paymentType)) : reject()
+      status === 1 ? resolve(successResponse(paymentType)) : status === 2 ? resolve(errorResponse(paymentType)) : reject('Tuvimos un problema al intentar crear la transacción')
     }, 2000)
   })
 }
